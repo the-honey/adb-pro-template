@@ -1,20 +1,32 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Item } from '../models/item';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ItemsService {
-  constructor() {}
+  private url = 'Item';
 
-  public getItems(): Item[] {
-    let item = new Item();
+  constructor(private http: HttpClient) {}
 
-    item.id = 1;
-    item.name = 'Item 1';
-    item.quantity = 0;
-    item.locationId = 1;
+  public getItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(`${environment.apiUrl}/${this.url}`);
+  }
 
-    return [item];
+  public updateItem(item: Item): Observable<Item[]> {
+    return this.http.put<Item[]>(`${environment.apiUrl}/${this.url}`, item);
+  }
+
+  public createItem(item: Item): Observable<Item[]> {
+    return this.http.post<Item[]>(`${environment.apiUrl}/${this.url}`, item);
+  }
+
+  public deleteItem(item: Item): Observable<Item[]> {
+    return this.http.delete<Item[]>(
+      `${environment.apiUrl}/${this.url}/${item.itemId}`
+    );
   }
 }

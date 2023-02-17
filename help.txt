@@ -1,2 +1,4 @@
 https://github.com/patrickgod/EFCoreRelationshipsTutorial
 https://www.youtube.com/watch?v=FHx6AGVF_IE
+
+https://github.com/patrickgod/SuperHeroNG

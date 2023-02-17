@@ -1,6 +1,7 @@
 export class Item {
-  id?: number;
+  itemId?: number;
   name = '';
   quantity = 0;
   locationId?: number;
+  location? = {};
 }
